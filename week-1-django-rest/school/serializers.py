@@ -5,6 +5,12 @@ class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Student
         fields = '__all__'
+        extra_kwargs = {
+            'first_name': {'max_length': 30},
+            'last_name': {'max_length': 30},
+            'cpf': {'max_length': 11},
+            'phone_number': {'max_length': 14},
+        }
 
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:
