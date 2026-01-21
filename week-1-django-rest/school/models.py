@@ -24,6 +24,17 @@ class Course(models.Model):
 
     def __str__(self):
         return self.course_id
+    
+class Enrollment(models.Model):
+    SHIFT = (
+        ('M', 'Morning'),
+        ('A', 'Afternoon'),
+        ('E', 'Evening')
+    )
+    student = models.ForeignKey(Student, on_delete = models.CASCADE)
+    course = models.ForeignKey(Course, on_delete = models.CASCADE)
+    shift = models.CharField(max_length = 1, choices = SHIFT, blank = False, null = False, default = 'M')
+    
 
 
 
