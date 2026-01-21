@@ -34,5 +34,5 @@ Learn to build RESTful APIs using Django and Django REST Framework.
 
 &nbsp;  ```powershell
 
-&nbsp;  venv\\Scripts\\Activate.ps1
+&nbsp;  venv\\Scripts\\activate
 
