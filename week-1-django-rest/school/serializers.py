@@ -6,12 +6,6 @@ class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Student
         fields = '__all__'
-        extra_kwargs = {
-            'first_name': {'max_length': 30},
-            'last_name': {'max_length': 30},
-            'cpf': {'max_length': 11},
-            'cell_phone_number': {'max_length': 13},
-        }
 
     def validate(self, data):
         if invalid_cpf(data['cpf']):
@@ -50,5 +44,10 @@ class EnrollmentCoursesListSerializer(serializers.ModelSerializer):
         fields = ['student_name']
     def get_student_name(self, obj):
         return f"{obj.student.first_name} {obj.student.last_name}"
+    
+class StudentSerializerV2(serializers.ModelSerializer):
+    class Meta:
+        model = Student
+        fields = ['id', 'first_name', 'last_name', 'email', 'cell_phone_number']    
 
 
