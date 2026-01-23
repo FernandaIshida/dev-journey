@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from school.models import Student, Course,Enrollment
+from school.validators import invalid_cpf, invalid_first_name, invalid_last_name, invalid_cell_phone_number
 
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -9,8 +10,19 @@ class StudentSerializer(serializers.ModelSerializer):
             'first_name': {'max_length': 30},
             'last_name': {'max_length': 30},
             'cpf': {'max_length': 11},
-            'phone_number': {'max_length': 14},
+            'cell_phone_number': {'max_length': 13},
         }
+
+    def validate(self, data):
+        if invalid_cpf(data['cpf']):
+            raise serializers.ValidationError({'cpf':'The CPF must have a valid value!'})
+        if invalid_first_name(data['first_name']):
+            raise serializers.ValidationError({'first_name':'The name must contain only letters!'})
+        if invalid_last_name(data['last_name']):
+            raise serializers.ValidationError({'last_name':'The last name must contain only letters!'})
+        if invalid_cell_phone_number(data['cell_phone_number']):
+            raise serializers.ValidationError({'cell_phone_number':'The cell phone number must follow the format: 86 99999-9999 (respecting dashes and spaces).'})
+        return data
 
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:
