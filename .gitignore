@@ -13,6 +13,7 @@ venv/
 *.log
 db.sqlite3
 media/
+*.env
 
 # IDEs
 .vscode/
