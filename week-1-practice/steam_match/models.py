@@ -2,13 +2,13 @@ from django.db import models
 
 class Gamer(models.Model):
     nickname = models.CharField(max_length=30, unique=True)
-    steam_id = models.CharField(max_length=20, unique=True, blank=True, null=True)
+    steam_username = models.CharField(max_length=30, unique=True, blank=True, null=True)
     avatar_url = models.URLField(blank=True, null=True)
     country = models.CharField(max_length=30, blank=True)
     join_date = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.nickname} ({self.steam_id})' if self.steam_id else self.nickname
+        return f'{self.nickname} ({self.steam_username})' if self.steam_username else self.nickname
     
 class Game(models.Model):
     title = models.CharField(max_length=100)
@@ -25,10 +25,10 @@ class Game(models.Model):
     
 class Friend(models.Model):
     gamer = models.ForeignKey( Gamer, related_name='friends', on_delete=models.CASCADE)
-    steam_nickname = models.CharField(max_length=30)
+    steam_username = models.CharField(max_length=30)
     match_score = models.IntegerField(default=0)
     top_games = models.ManyToManyField(Game, blank=True)
 
     def __str__(self):
-        return f'Friend: {self.steam_nickname}'
+        return f'Friend: {self.steam_username}'
     
