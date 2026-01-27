@@ -8,7 +8,6 @@ from rest_framework.throttling import UserRateThrottle
 
 class StudentViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all().order_by('id')
-    # serializer_class = StudentSerializer
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter]
     ordering_fields = ['first_name']
     search_fields = ['first_name', 'last_name', 'cpf']
@@ -25,6 +24,7 @@ class EnrollmentViewSet(viewsets.ModelViewSet):
     queryset = Enrollment.objects.all().order_by('id')
     serializer_class = EnrollmentSerializer
     throttle_classes = [UserRateThrottle, EnrollmentAnonThrottle]
+    http_method_names = ['get', 'post']
 
 class EnrollmentStudentsList(generics.ListAPIView):
     def get_queryset(self):
