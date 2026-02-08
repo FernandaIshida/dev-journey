@@ -58,6 +58,17 @@ graph TD
 
 ---
 
+## Deployment
+
+This project is part of a broader learning journey and lives inside the
+`dev-journey` repository for study and experimentation purposes.
+
+For deployment and infrastructure-related work, the API was extracted into
+a dedicated repository to keep the production setup clean and focused.
+
+**Deployment repository:**
+https://github.com/FernandaIshida/week-1-drf
+
 ## Running the Project
 
 1. Clone the repository:
