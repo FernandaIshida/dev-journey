@@ -5,6 +5,7 @@ from school.throttles import EnrollmentAnonThrottle
 from rest_framework import viewsets, generics, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.throttling import UserRateThrottle
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 class StudentViewSet(viewsets.ModelViewSet):
     """
@@ -45,6 +46,7 @@ class CourseViewSet(viewsets.ModelViewSet):
     """
     queryset = Course.objects.all().order_by('id')
     serializer_class = CourseSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class EnrollmentViewSet(viewsets.ModelViewSet):
     """
