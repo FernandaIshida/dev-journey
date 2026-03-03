@@ -13,10 +13,10 @@ It highlights my skills in building robust APIs with **Python and Django REST Fr
 The content here is organized as a series of progressive projects and detailed study plans, each focused on real-world backend development techniques and industry-relevant practices. This documentation is intended to demonstrate professional competency, project organization, and the ability to integrate multiple technologies into scalable solutions.
 
 
-This repository contains my 7-week study plan for learning and practicing full-stack development, Django REST API, Go, testing, and more.
+This repository documents my completed projects and study phases in full-stack development, highlighting skills in Django REST API, Go, testing, and other related technologies.
 
-## Weekly structure
+## Projects & Phases
 
-- [Week 1: Django REST API Structure](week-1-django-rest/README.md)
-- Week 2: ...
-- Week 3: ...
+- [Django REST API Structure](week-1-django-rest/README.md)
+- : ...
+- : ...
