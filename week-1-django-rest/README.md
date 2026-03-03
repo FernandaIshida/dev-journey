@@ -1,4 +1,4 @@
-# week-1-django-rest
+# django-rest-api
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
 ![Django](https://img.shields.io/badge/Django-4.x-green)
@@ -20,6 +20,11 @@ Key highlights:
 - Use of DRF ViewSets and Routers for scalable REST endpoints
 - Proper model relationships, validations, and serializers
 - Prepared for extension and integration with authentication/permissions
+- Added request limiting and permissions
+- API documentation included
+- Integrated with front-end and deployment-ready
+- Pagination, ordering, and filtering implemented
+- Comprehensive tests covering models, serializers, authentication, and API requests
 
 ---
 
