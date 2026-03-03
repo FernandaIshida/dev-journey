@@ -6,30 +6,15 @@ from school.models import Enrollment, Student, Course
 from school.serializers import EnrollmentSerializer
 
 class EnrollmentsTestCase(APITestCase):
+    fixtures = ['prototype_data_base.json']
     def setUp(self):
-        self.user = User.objects.create_superuser(username='admin', password='admin')
+        #self.user = User.objects.create_superuser(username='admin', password='admin')
+        self.user = User.objects.get(username='fer')
         self.url = reverse('Enrollments-list')
         self.client.force_authenticate(user=self.user)
-        self.student = Student.objects.create(
-            first_name='Test Student',
-            last_name='One',
-            email='test1@example.com',
-            cpf='59812748083', date_of_birth='2000-01-01',
-            cell_phone_number='86 99999-9999'
-        )
-        
-        self.course = Course.objects.create(
-            course_id='Test Course One',
-            description='Description for Test Course One',
-            level='B'
-        )
-        
-        self.enrollment = Enrollment.objects.create(
-            student = self.student,
-            course = self.course,
-            shift = 'M'
-        )
-
+        self.student = Student.objects.get(pk=1)
+        self.course = Course.objects.get(pk=1)
+        self.enrollment = Enrollment.objects.get(pk=1)
 
     def test_get_request_enrollments(self):
         """

@@ -6,24 +6,28 @@ from school.models import Student
 from school.serializers import StudentSerializer
 
 class StudentsTestCase(APITestCase):
+    fixtures = ['prototype_data_base.json']
     def setUp(self):
-        self.user = User.objects.create_superuser(username='admin', password='admin')
+        #self.user = User.objects.create_superuser(username='admin', password='admin')
+        self.user = User.objects.get(username='fer')
         self.url = reverse('Students-list')
         self.client.force_authenticate(user=self.user)
-        self.student_01 = Student.objects.create(
-            first_name='Test Student',
-            last_name='One',
-            email='test1@example.com',
-            cpf='59812748083', date_of_birth='2000-01-01',
-            cell_phone_number='86 99999-9999'
-        )
-        self.student_02 = Student.objects.create(
-            first_name='Test Student',
-            last_name='Two',
-            email='test2@example.com',
-            cpf='02139023030', date_of_birth='2000-01-01',
-            cell_phone_number='86 99999-9999'
-        )
+        #self.student_01 = Student.objects.create(
+        #    first_name='Test Student',
+        #    last_name='One',
+        #    email='test1@example.com',
+        #    cpf='59812748083', date_of_birth='2000-01-01',
+        #    cell_phone_number='86 99999-9999'
+        #)
+        self.student_01 = Student.objects.get(pk=1)
+        #self.student_02 = Student.objects.create(
+        #    first_name='Test Student',
+        #    last_name='Two',
+        #    email='test2@example.com',
+        #    cpf='02139023030', date_of_birth='2000-01-01',
+        #    cell_phone_number='86 99999-9999'
+        #)
+        self.student_02 =Student.objects.get(pk=3)
     
     def test_get_request_students(self):
         """
@@ -42,7 +46,7 @@ class StudentsTestCase(APITestCase):
         student_data_serialized = StudentSerializer(instance=student_data).data
         self.assertEqual(response.data, student_data_serialized)
 
-    def test_post_request_student_criate(self):
+    def test_post_request_student_create(self):
         """
         Test POST request to create a student.
         """
@@ -61,7 +65,7 @@ class StudentsTestCase(APITestCase):
         """
         Test DELETE request student.
         """
-        response = self.client.delete(f'{self.url}2/')#/students/2/
+        response = self.client.delete(f'{self.url}1/')#/students/1/
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
     def test_put_request_student_update(self):

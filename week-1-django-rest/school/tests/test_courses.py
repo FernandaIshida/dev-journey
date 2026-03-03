@@ -6,20 +6,14 @@ from school.models import Course
 from school.serializers import CourseSerializer
 
 class CoursesTestCase(APITestCase):
+    fixtures = ['prototype_data_base.json']
     def setUp(self):
-        self.user = User.objects.create_superuser(username='admin', password='admin')
+        #self.user = User.objects.create_superuser(username='admin', password='admin')
+        self.user = User.objects.get(username='fer')
         self.url = reverse('Courses-list')
         self.client.force_authenticate(user=self.user)
-        self.course_01 = Course.objects.create(
-            course_id='Test Course One',
-            description='Description for Test Course One',
-            level='B'
-        )
-        self.course_02 = Course.objects.create(
-            course_id='Test Course Two',
-            description='Description for Test Course Two',
-            level='B'
-        )
+        self.course_01 = Course.objects.get(pk=1)
+        self.course_02 = Course.objects.get(pk=2)
 
     def test_get_request_courses(self):
         """
