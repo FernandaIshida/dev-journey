@@ -17,6 +17,6 @@ This repository documents my completed projects and study phases in full-stack d
 
 ## Projects & Phases
 
-- [Django REST API Structure](week-1-django-rest/README.md)
+- [Django REST API Structure](django-rest-api/README.md)
 - : ...
 - : ...

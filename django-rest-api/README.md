@@ -40,7 +40,7 @@ Key highlights:
 
 ```mermaid
 graph TD
-    A[week-1-django-rest]
+    A[django-rest-api]
 
     A --> B[school]
     B --> B1[models.py]
@@ -79,7 +79,7 @@ https://github.com/FernandaIshida/week-1-drf
 1. Clone the repository:
    ```bash
    git clone https://github.com/FernandaIshida/dev-journey.git
-   cd dev-journey/week-1-django-rest
+   cd dev-journey/django-rest-api
 
 2. Install dependencies:
    ```bash
