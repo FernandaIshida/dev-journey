@@ -18,5 +18,5 @@ This repository documents my completed projects and study phases in full-stack d
 ## Projects & Phases
 
 - [Django REST API Structure](django-rest-api/README.md)
-- : ...
-- : ...
+- [Go Web Application](https://github.com/FernandaIshida/go-web-application)
+- [Go GIN API](https://github.com/FernandaIshida/go-gin-api)
